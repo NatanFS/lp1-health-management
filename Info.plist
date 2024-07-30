@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Informações básicas do aplicativo -->
+    <key>CFBundleDisplayName</key>
+    <string>lp1project-health</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.yourcompany.lp1project-health</string>
+    <key>CFBundleName</key>
+    <string>lp1project-health</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>10.15</string> <!-- ou a versão mínima do macOS que você deseja suportar -->
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    
+    <!-- Permissões de Bluetooth -->
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Seu aplicativo precisa acessar o Bluetooth para se comunicar com dispositivos próximos.</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>Seu aplicativo precisa acessar dispositivos Bluetooth para fornecer funcionalidades adicionais.</string>
+
+    <!-- Outras permissões comuns -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Seu aplicativo precisa acessar a localização para fornecer melhores serviços baseados em localização.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Seu aplicativo precisa acessar a câmera para capturar fotos e vídeos.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Seu aplicativo precisa acessar o microfone para gravar áudio.</string>
+</dict>
+</plist>
+

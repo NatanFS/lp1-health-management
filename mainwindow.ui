@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="startWalkButton">
+      <property name="text">
+       <string>Registrar Caminhada</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>780</width>
+         <height>1400</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayoutScrollArea">
+        <item>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="groupBoxSteps">
+            <property name="title">
+             <string>Steps</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutSteps">
+             <item>
+              <widget class="QChartView" name="chartViewSteps"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutSteps">
+               <item>
+                <widget class="QLabel" name="labelSteps"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageSteps"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QGroupBox" name="groupBoxCalories">
+            <property name="title">
+             <string>Calories</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutCalories">
+             <item>
+              <widget class="QChartView" name="chartViewCalories"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutCalories">
+               <item>
+                <widget class="QLabel" name="labelCalories"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageCalories"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QGroupBox" name="groupBoxSleep">
+            <property name="title">
+             <string>Sleep Hours</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutSleep">
+             <item>
+              <widget class="QChartView" name="chartViewSleep"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutSleep">
+               <item>
+                <widget class="QLabel" name="labelSleep"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageSleep"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QGroupBox" name="groupBoxBloodPressure">
+            <property name="title">
+             <string>Blood Pressure</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutBloodPressure">
+             <item>
+              <widget class="QChartView" name="chartViewBloodPressure"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutBloodPressure">
+               <item>
+                <widget class="QLabel" name="labelBloodPressure"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageBloodPressure"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QGroupBox" name="groupBoxTemperature">
+            <property name="title">
+             <string>Body Temperature</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutTemperature">
+             <item>
+              <widget class="QChartView" name="chartViewTemperature"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutTemperature">
+               <item>
+                <widget class="QLabel" name="labelTemperature"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageTemperature"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QGroupBox" name="groupBoxHeartRate">
+            <property name="title">
+             <string>Heart Rate</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutHeartRate">
+             <item>
+              <widget class="QChartView" name="chartViewHeartRate"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutHeartRate">
+               <item>
+                <widget class="QLabel" name="labelHeartRate"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageHeartRate"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QGroupBox" name="groupBoxBloodGlucose">
+            <property name="title">
+             <string>Blood Glucose</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutBloodGlucose">
+             <item>
+              <widget class="QChartView" name="chartViewBloodGlucose"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutBloodGlucose">
+               <item>
+                <widget class="QLabel" name="labelBloodGlucose"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageBloodGlucose"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QGroupBox" name="groupBoxBloodOxygen">
+            <property name="title">
+             <string>Blood Oxygen</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayoutBloodOxygen">
+             <item>
+              <widget class="QChartView" name="chartViewBloodOxygen"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayoutBloodOxygen">
+               <item>
+                <widget class="QLabel" name="labelBloodOxygen"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelAverageBloodOxygen"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

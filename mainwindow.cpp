@@ -65,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setupChart(ui->chartViewSteps, chartSteps, seriesSteps, "Steps", 0, 30000);
     setupChart(ui->chartViewCalories, chartCalories, seriesCalories, "Calories", 0, 5000);
-    setupChart(ui->chartViewRestingTime, chartRestingTime, seriesRestingTime, "Resting Time", 0, 120);  // Ajuste para refletir o tempo real de descanso em segundos
+    setupChart(ui->chartViewRestingTime, chartRestingTime, seriesRestingTime, "Resting Time", 0, 120);
     setupChart(ui->chartViewBloodPressure, chartBloodPressure, seriesBloodPressure, "Blood Pressure", 50, 200);
     setupChart(ui->chartViewTemperature, chartTemperature, seriesTemperature, "Body Temperature", 35, 42);
     setupChart(ui->chartViewHeartRate, chartHeartRate, seriesHeartRate, "Heart Rate", 40, 180);
@@ -85,7 +85,7 @@ MainWindow::MainWindow(QWidget *parent) :
     dataGenerationTimer->start(1000);
 
     connect(modeSwitchTimer, &QTimer::timeout, this, &MainWindow::switchMode);
-    switchMode();  // Start the first mode
+    switchMode();
 }
 
 MainWindow::~MainWindow()

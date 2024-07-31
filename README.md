@@ -42,8 +42,7 @@ git clone https://github.com/yourusername/health-tracker.git
 ### Exporting Data
 
 1. To export the data to CSV, click on the "Export to CSV" button.
-2. To export the data to XLSX, click on the "Export to XLSX" button.
-3. A file dialog will prompt you to choose the location and name of the file to save the data.
+2. A file dialog will prompt you to choose the location and name of the file to save the data.
 
 ## Project Structure
 
@@ -56,15 +55,10 @@ git clone https://github.com/yourusername/health-tracker.git
 
 - Qt 6.7.2
 - QtCharts module
-- QtXlsxWriter
 
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Acknowledgements
-
-- [QtXlsxWriter](https://github.com/dbzhang800/QtXlsxWriter) for providing the XLSX export functionality.
 
 ## Contributing
 

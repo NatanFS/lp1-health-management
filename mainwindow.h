@@ -28,9 +28,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTimer *dataGenerationTimer;
+    QTimer *modeSwitchTimer;
     QLineSeries *seriesSteps;
     QLineSeries *seriesCalories;
-    QLineSeries *seriesSleep;
+    QLineSeries *seriesRestingTime;
     QLineSeries *seriesBloodPressure;
     QLineSeries *seriesTemperature;
     QLineSeries *seriesHeartRate;
@@ -39,7 +40,7 @@ private:
 
     QChart *chartSteps;
     QChart *chartCalories;
-    QChart *chartSleep;
+    QChart *chartRestingTime;
     QChart *chartBloodPressure;
     QChart *chartTemperature;
     QChart *chartHeartRate;
@@ -47,12 +48,16 @@ private:
     QChart *chartBloodOxygen;
 
     int timeCounter;
-    bool isWalking;
+    bool isResting;
+    int walkDuration;
+    int restDuration;
+    int totalRestingTime;
 
     // Adicionar membros QLabel
     QLabel *labelSteps;
     QLabel *labelCalories;
-    QLabel *labelSleep;
+    QLabel *labelRestingTime;
+    QLabel *labelTotalRestingTime;
     QLabel *labelBloodPressure;
     QLabel *labelTemperature;
     QLabel *labelHeartRate;
@@ -61,7 +66,7 @@ private:
 
     QLabel *labelAverageSteps;
     QLabel *labelAverageCalories;
-    QLabel *labelAverageSleep;
+    QLabel *labelAverageRestingTime;
     QLabel *labelAverageBloodPressure;
     QLabel *labelAverageTemperature;
     QLabel *labelAverageHeartRate;
@@ -75,6 +80,7 @@ private:
     void updateYAxisRange(QChart *chart, QLineSeries *series); // Adicionar a declaração da função
     void setFixedYAxisRange(QChart *chart, double minY, double maxY);
     void updateAverageLabel(QLineSeries *series, QLabel *label, const QString &prefix, const QString &suffix);
+    void switchMode(); // Função para alternar entre os modos
     void generateSimulatedData();
 };
 

@@ -18,7 +18,16 @@
     <item>
      <widget class="QPushButton" name="startWalkButton">
       <property name="text">
-       <string>Registrar Caminhada</string>
+       <string>Start resting</string>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: green; color: white; font-size: 18px;</string>
       </property>
      </widget>
     </item>
@@ -33,189 +42,251 @@
          <x>0</x>
          <y>0</y>
          <width>780</width>
-         <height>1400</height>
+         <height>1600</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayoutScrollArea">
-        <item>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QGroupBox" name="groupBoxSteps">
-            <property name="title">
-             <string>Steps</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutSteps">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBoxSteps">
+          <property name="title">
+           <string>Steps</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutSteps">
+           <item>
+            <widget class="QChartView" name="chartViewSteps"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutSteps">
              <item>
-              <widget class="QChartView" name="chartViewSteps"/>
+              <widget class="QLabel" name="labelSteps"/>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutSteps">
-               <item>
-                <widget class="QLabel" name="labelSteps"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageSteps"/>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QGroupBox" name="groupBoxCalories">
-            <property name="title">
-             <string>Calories</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutCalories">
-             <item>
-              <widget class="QChartView" name="chartViewCalories"/>
+              <spacer name="horizontalSpacerStepsRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutCalories">
-               <item>
-                <widget class="QLabel" name="labelCalories"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageCalories"/>
-               </item>
-              </layout>
+              <widget class="QLabel" name="labelAverageSteps"/>
              </item>
             </layout>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QGroupBox" name="groupBoxSleep">
-            <property name="title">
-             <string>Sleep Hours</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutSleep">
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="groupBoxCalories">
+          <property name="title">
+           <string>Calories</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutCalories">
+           <item>
+            <widget class="QChartView" name="chartViewCalories"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutCalories">
              <item>
-              <widget class="QChartView" name="chartViewSleep"/>
+              <widget class="QLabel" name="labelCalories"/>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutSleep">
-               <item>
-                <widget class="QLabel" name="labelSleep"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageSleep"/>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QGroupBox" name="groupBoxBloodPressure">
-            <property name="title">
-             <string>Blood Pressure</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutBloodPressure">
-             <item>
-              <widget class="QChartView" name="chartViewBloodPressure"/>
+              <spacer name="horizontalSpacerCaloriesRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutBloodPressure">
-               <item>
-                <widget class="QLabel" name="labelBloodPressure"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageBloodPressure"/>
-               </item>
-              </layout>
+              <widget class="QLabel" name="labelAverageCalories"/>
              </item>
             </layout>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QGroupBox" name="groupBoxTemperature">
-            <property name="title">
-             <string>Body Temperature</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutTemperature">
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBoxRestingTime">
+          <property name="title">
+           <string>Resting Time</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutRestingTime">
+           <item>
+            <widget class="QChartView" name="chartViewRestingTime"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutRestingTime">
              <item>
-              <widget class="QChartView" name="chartViewTemperature"/>
+              <widget class="QLabel" name="labelRestingTime"/>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutTemperature">
-               <item>
-                <widget class="QLabel" name="labelTemperature"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageTemperature"/>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QGroupBox" name="groupBoxHeartRate">
-            <property name="title">
-             <string>Heart Rate</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutHeartRate">
-             <item>
-              <widget class="QChartView" name="chartViewHeartRate"/>
+              <spacer name="horizontalSpacerRestingTimeMiddle" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutHeartRate">
-               <item>
-                <widget class="QLabel" name="labelHeartRate"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageHeartRate"/>
-               </item>
-              </layout>
+              <widget class="QLabel" name="labelTotalRestingTime"/>
+             </item>
+             <item>
+              <spacer name="horizontalSpacerRestingTimeRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelAverageRestingTime"/>
              </item>
             </layout>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QGroupBox" name="groupBoxBloodGlucose">
-            <property name="title">
-             <string>Blood Glucose</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutBloodGlucose">
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBoxBloodPressure">
+          <property name="title">
+           <string>Blood Pressure</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutBloodPressure">
+           <item>
+            <widget class="QChartView" name="chartViewBloodPressure"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutBloodPressure">
              <item>
-              <widget class="QChartView" name="chartViewBloodGlucose"/>
+              <widget class="QLabel" name="labelBloodPressure"/>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutBloodGlucose">
-               <item>
-                <widget class="QLabel" name="labelBloodGlucose"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageBloodGlucose"/>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QGroupBox" name="groupBoxBloodOxygen">
-            <property name="title">
-             <string>Blood Oxygen</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayoutBloodOxygen">
-             <item>
-              <widget class="QChartView" name="chartViewBloodOxygen"/>
+              <spacer name="horizontalSpacerBloodPressureRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayoutBloodOxygen">
-               <item>
-                <widget class="QLabel" name="labelBloodOxygen"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="labelAverageBloodOxygen"/>
-               </item>
-              </layout>
+              <widget class="QLabel" name="labelAverageBloodPressure"/>
              </item>
             </layout>
-           </widget>
-          </item>
-         </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QGroupBox" name="groupBoxTemperature">
+          <property name="title">
+           <string>Body Temperature</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutTemperature">
+           <item>
+            <widget class="QChartView" name="chartViewTemperature"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutTemperature">
+             <item>
+              <widget class="QLabel" name="labelTemperature"/>
+             </item>
+             <item>
+              <spacer name="horizontalSpacerTemperatureRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelAverageTemperature"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QGroupBox" name="groupBoxHeartRate">
+          <property name="title">
+           <string>Heart Rate</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutHeartRate">
+           <item>
+            <widget class="QChartView" name="chartViewHeartRate"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutHeartRate">
+             <item>
+              <widget class="QLabel" name="labelHeartRate"/>
+             </item>
+             <item>
+              <spacer name="horizontalSpacerHeartRateRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelAverageHeartRate"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QGroupBox" name="groupBoxBloodGlucose">
+          <property name="title">
+           <string>Blood Glucose</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutBloodGlucose">
+           <item>
+            <widget class="QChartView" name="chartViewBloodGlucose"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutBloodGlucose">
+             <item>
+              <widget class="QLabel" name="labelBloodGlucose"/>
+             </item>
+             <item>
+              <spacer name="horizontalSpacerBloodGlucoseRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelAverageBloodGlucose"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QGroupBox" name="groupBoxBloodOxygen">
+          <property name="title">
+           <string>Blood Oxygen</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayoutBloodOxygen">
+           <item>
+            <widget class="QChartView" name="chartViewBloodOxygen"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayoutBloodOxygen">
+             <item>
+              <widget class="QLabel" name="labelBloodOxygen"/>
+             </item>
+             <item>
+              <spacer name="horizontalSpacerBloodOxygenRight" >
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelAverageBloodOxygen"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
         </item>
        </layout>
       </widget>

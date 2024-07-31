@@ -10,6 +10,8 @@ This Health Tracker Application is designed to simulate and display various heal
 - Ability to start and stop tracking
 - Export data to CSV
 
+![Screenshot 2024-07-31 at 14 51 13](https://github.com/user-attachments/assets/ed63fb24-3844-434b-8aeb-ffe78e73f9f6)
+
 ## Requirements
 
 - Qt 6.7.2 or later

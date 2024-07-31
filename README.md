@@ -18,7 +18,7 @@ This Health Tracker Application is designed to simulate and display various heal
 
 ### Exported data to CSV
 
-![Screenshot 2024-07-31 at 15 05 31](https://github.com/user-attachments/assets/ab4099a5-80e7-4339-a557-63f2b2757319)
+![Screenshot 2024-07-31 at 15 07 48](https://github.com/user-attachments/assets/ec8d4723-28c0-4f0f-910b-a095813cc638)
 
 ## Requirements
 

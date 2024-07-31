@@ -44,13 +44,6 @@ git clone https://github.com/yourusername/health-tracker.git
 1. To export the data to CSV, click on the "Export to CSV" button.
 2. A file dialog will prompt you to choose the location and name of the file to save the data.
 
-## Project Structure
-
-- `mainwindow.h`: Header file for the main window class.
-- `mainwindow.cpp`: Implementation file for the main window class.
-- `mainwindow.ui`: UI file defining the layout of the main window.
-- `main.cpp`: Entry point of the application.
-
 ## Dependencies
 
 - Qt 6.7.2

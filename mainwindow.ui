@@ -17,9 +17,6 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QPushButton" name="startWalkButton">
-      <property name="text">
-       <string>Start resting</string>
-      </property>
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -28,6 +25,22 @@
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: green; color: white; font-size: 18px;</string>
+      </property>
+      <property name="text">
+       <string>Start resting</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="exportCsvButton">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Export to CSV</string>
       </property>
      </widget>
     </item>
@@ -41,8 +54,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>780</width>
-         <height>1600</height>
+         <width>774</width>
+         <height>471</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout">
@@ -53,7 +66,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutSteps">
            <item>
-            <widget class="QChartView" name="chartViewSteps"/>
+            <widget class="QChartView" name="chartViewSteps" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutSteps">
@@ -61,9 +74,15 @@
               <widget class="QLabel" name="labelSteps"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerStepsRight" >
+              <spacer name="horizontalSpacerStepsRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -82,7 +101,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutCalories">
            <item>
-            <widget class="QChartView" name="chartViewCalories"/>
+            <widget class="QChartView" name="chartViewCalories" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutCalories">
@@ -90,9 +109,15 @@
               <widget class="QLabel" name="labelCalories"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerCaloriesRight" >
+              <spacer name="horizontalSpacerCaloriesRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -111,7 +136,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutRestingTime">
            <item>
-            <widget class="QChartView" name="chartViewRestingTime"/>
+            <widget class="QChartView" name="chartViewRestingTime" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutRestingTime">
@@ -119,9 +144,15 @@
               <widget class="QLabel" name="labelRestingTime"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerRestingTimeMiddle" >
+              <spacer name="horizontalSpacerRestingTimeMiddle">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -129,9 +160,15 @@
               <widget class="QLabel" name="labelTotalRestingTime"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerRestingTimeRight" >
+              <spacer name="horizontalSpacerRestingTimeRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -150,7 +187,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutBloodPressure">
            <item>
-            <widget class="QChartView" name="chartViewBloodPressure"/>
+            <widget class="QChartView" name="chartViewBloodPressure" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutBloodPressure">
@@ -158,9 +195,15 @@
               <widget class="QLabel" name="labelBloodPressure"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerBloodPressureRight" >
+              <spacer name="horizontalSpacerBloodPressureRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -179,7 +222,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutTemperature">
            <item>
-            <widget class="QChartView" name="chartViewTemperature"/>
+            <widget class="QChartView" name="chartViewTemperature" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutTemperature">
@@ -187,9 +230,15 @@
               <widget class="QLabel" name="labelTemperature"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerTemperatureRight" >
+              <spacer name="horizontalSpacerTemperatureRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -208,7 +257,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutHeartRate">
            <item>
-            <widget class="QChartView" name="chartViewHeartRate"/>
+            <widget class="QChartView" name="chartViewHeartRate" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutHeartRate">
@@ -216,9 +265,15 @@
               <widget class="QLabel" name="labelHeartRate"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerHeartRateRight" >
+              <spacer name="horizontalSpacerHeartRateRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -237,7 +292,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutBloodGlucose">
            <item>
-            <widget class="QChartView" name="chartViewBloodGlucose"/>
+            <widget class="QChartView" name="chartViewBloodGlucose" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutBloodGlucose">
@@ -245,9 +300,15 @@
               <widget class="QLabel" name="labelBloodGlucose"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerBloodGlucoseRight" >
+              <spacer name="horizontalSpacerBloodGlucoseRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -266,7 +327,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayoutBloodOxygen">
            <item>
-            <widget class="QChartView" name="chartViewBloodOxygen"/>
+            <widget class="QChartView" name="chartViewBloodOxygen" native="true"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayoutBloodOxygen">
@@ -274,9 +335,15 @@
               <widget class="QLabel" name="labelBloodOxygen"/>
              </item>
              <item>
-              <spacer name="horizontalSpacerBloodOxygenRight" >
+              <spacer name="horizontalSpacerBloodOxygenRight">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
               </spacer>
              </item>
@@ -300,12 +367,19 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>qchartview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

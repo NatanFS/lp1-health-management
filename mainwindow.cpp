@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFile>
+#include <QTextStream>
 #include <cstdlib>
 #include <ctime>
 #include <QDateTime>
@@ -29,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     chartBloodOxygen(new QChart()),
     timeCounter(0),
     isResting(false),
-    totalRestingTime(0)  // Initialize totalRestingTime
+    totalRestingTime(0)
 {
     ui->setupUi(this);
 
@@ -53,14 +55,17 @@ MainWindow::MainWindow(QWidget *parent) :
     labelAverageBloodGlucose = ui->labelAverageBloodGlucose;
     labelAverageBloodOxygen = ui->labelAverageBloodOxygen;
 
-    labelTotalRestingTime = ui->labelTotalRestingTime;  // Add this line
+    labelTotalRestingTime = ui->labelTotalRestingTime;
 
     startWalkButton = ui->startWalkButton;
+    exportCsvButton = ui->exportCsvButton;
+
     connect(startWalkButton, &QPushButton::clicked, this, &MainWindow::onStartWalkButtonClicked);
+    connect(exportCsvButton, &QPushButton::clicked, this, &MainWindow::onExportCsvButtonClicked);
 
     setupChart(ui->chartViewSteps, chartSteps, seriesSteps, "Steps", 0, 30000);
     setupChart(ui->chartViewCalories, chartCalories, seriesCalories, "Calories", 0, 5000);
-    setupChart(ui->chartViewRestingTime, chartRestingTime, seriesRestingTime, "Resting Time", 0, 2);
+    setupChart(ui->chartViewRestingTime, chartRestingTime, seriesRestingTime, "Resting Time", 0, 120);  // Ajuste para refletir o tempo real de descanso em segundos
     setupChart(ui->chartViewBloodPressure, chartBloodPressure, seriesBloodPressure, "Blood Pressure", 50, 200);
     setupChart(ui->chartViewTemperature, chartTemperature, seriesTemperature, "Body Temperature", 35, 42);
     setupChart(ui->chartViewHeartRate, chartHeartRate, seriesHeartRate, "Heart Rate", 40, 180);
@@ -80,6 +85,7 @@ MainWindow::MainWindow(QWidget *parent) :
     dataGenerationTimer->start(1000);
 
     connect(modeSwitchTimer, &QTimer::timeout, this, &MainWindow::switchMode);
+    switchMode();  // Start the first mode
 }
 
 MainWindow::~MainWindow()
@@ -115,6 +121,7 @@ void MainWindow::generateSimulatedData()
     static int steps = 0;
     static double calories = 0;
     static double restingTime = 0;
+    static double totalRestingTime = 0;
     static double bloodPressure = 120;
     static double temperature = 37;
     static double heartRate = 75;
@@ -140,21 +147,12 @@ void MainWindow::generateSimulatedData()
         bloodOxygen = 98 + QRandomGenerator::global()->bounded(2) * std::sin(timeCounter * M_PI / 720.0);
 
         restingTime += 1.0 / 60.0;
-        totalRestingTime += 1.0 / 60.0;  // Increment total resting time
-
-        if (restingTime >= 2) {
-            isResting = false;
-            startWalkButton->setText("Start resting");
-            startWalkButton->setStyleSheet("background-color: green; color: white; font-size: 18px;");
-            restingTime = 0;
-            walkDuration = 90 + QRandomGenerator::global()->bounded(30);
-            modeSwitchTimer->start(walkDuration * 1000);
-        }
+        totalRestingTime += 1.0 / 60.0;
     }
 
     seriesSteps->append(currentTime.toMSecsSinceEpoch(), steps);
     seriesCalories->append(currentTime.toMSecsSinceEpoch(), calories);
-    seriesRestingTime->append(currentTime.toMSecsSinceEpoch(), restingTime);
+    seriesRestingTime->append(currentTime.toMSecsSinceEpoch(), restingTime * 60);
     seriesBloodPressure->append(currentTime.toMSecsSinceEpoch(), bloodPressure);
     seriesTemperature->append(currentTime.toMSecsSinceEpoch(), temperature);
     seriesHeartRate->append(currentTime.toMSecsSinceEpoch(), heartRate);
@@ -163,7 +161,8 @@ void MainWindow::generateSimulatedData()
 
     labelSteps->setText(QString("Steps: %1").arg(static_cast<int>(steps)));
     labelCalories->setText(QString("Calories: %1 kcal").arg(static_cast<int>(calories)));
-    labelRestingTime->setText(QString("Resting Time: %1s").arg(static_cast<int>(restingTime * 60)));
+    labelRestingTime->setText(QString("Resting Time: %1 s").arg(static_cast<int>(restingTime * 60)));
+    labelTotalRestingTime->setText(QString("Total Resting Time: %1 s").arg(static_cast<int>(totalRestingTime * 60)));
     labelBloodPressure->setText(QString("Blood Pressure: %1 mmHg").arg(QString::number(bloodPressure, 'f', 1)));
     labelTemperature->setText(QString("Body Temperature: %1 °C").arg(QString::number(temperature, 'f', 1)));
     labelHeartRate->setText(QString("Heart Rate: %1 bpm").arg(static_cast<int>(heartRate)));
@@ -172,14 +171,12 @@ void MainWindow::generateSimulatedData()
 
     updateAverageLabel(seriesSteps, labelAverageSteps, "Average Steps: ", " steps");
     updateAverageLabel(seriesCalories, labelAverageCalories, "Average Calories: ", " kcal");
-    updateAverageLabel(seriesRestingTime, labelAverageRestingTime, "Average Resting Time: ", "s");
+    updateAverageLabel(seriesRestingTime, labelAverageRestingTime, "Average Resting Time: ", " s");
     updateAverageLabel(seriesBloodPressure, labelAverageBloodPressure, "Average Blood Pressure: ", " mmHg");
     updateAverageLabel(seriesTemperature, labelAverageTemperature, "Average Body Temperature: ", " °C");
     updateAverageLabel(seriesHeartRate, labelAverageHeartRate, "Average Heart Rate: ", " bpm");
     updateAverageLabel(seriesBloodGlucose, labelAverageBloodGlucose, "Average Blood Glucose: ", " mg/dL");
     updateAverageLabel(seriesBloodOxygen, labelAverageBloodOxygen, "Average Blood Oxygen: ", "%");
-
-    labelTotalRestingTime->setText(QString("Total Resting Time: %1s").arg(static_cast<int>(totalRestingTime * 60)));
 
     timeCounter++;
 
@@ -229,7 +226,7 @@ void MainWindow::generateSimulatedData()
     updateYAxisRange(chartSteps, seriesSteps);
     updateYAxisRange(chartCalories, seriesCalories);
 
-    setFixedYAxisRange(chartRestingTime, 0, 2);
+    setFixedYAxisRange(chartRestingTime, 0, 120);
     setFixedYAxisRange(chartBloodPressure, 50, 200);
     setFixedYAxisRange(chartTemperature, 35, 42);
     setFixedYAxisRange(chartHeartRate, 40, 180);
@@ -262,7 +259,6 @@ void MainWindow::updateYAxisRange(QChart *chart, QLineSeries *series)
         margin = 1.0;
     }
 
-    // Garantir que minY não seja negativo
     if (minY < 0) {
         minY = 0;
     }
@@ -300,7 +296,7 @@ void MainWindow::updateAverageLabel(QLineSeries *series, QLabel *label, const QS
 
     QString formattedAverage;
     if (prefix.contains("Resting Time")) {
-        formattedAverage = QString::number(average * 60, 'f', 1) + " s";
+        formattedAverage = QString::number(average, 'f', 1) + " s";
     } else {
         formattedAverage = QString::number(average, 'f', 1) + suffix;
     }
@@ -310,17 +306,7 @@ void MainWindow::updateAverageLabel(QLineSeries *series, QLabel *label, const QS
 
 void MainWindow::onStartWalkButtonClicked()
 {
-    isResting = !isResting;
-    if (isResting) {
-        startWalkButton->setText("Stop resting");
-        startWalkButton->setStyleSheet("background-color: red; color: white; font-size: 18px;");
-        restDuration = 30 + QRandomGenerator::global()->bounded(15);
-        modeSwitchTimer->start(restDuration * 1000);
-    } else {
-        startWalkButton->setText("Start resting");
-        startWalkButton->setStyleSheet("background-color: green; color: white; font-size: 18px;");
-        modeSwitchTimer->stop();
-    }
+    switchMode();
 }
 
 void MainWindow::switchMode()
@@ -329,12 +315,49 @@ void MainWindow::switchMode()
     if (isResting) {
         startWalkButton->setText("Stop resting");
         startWalkButton->setStyleSheet("background-color: red; color: white; font-size: 18px;");
-        restDuration = 30 + QRandomGenerator::global()->bounded(15);
+        int restDuration = 20 + QRandomGenerator::global()->bounded(20);  // 20s ~ 40s
         modeSwitchTimer->start(restDuration * 1000);
     } else {
         startWalkButton->setText("Start resting");
         startWalkButton->setStyleSheet("background-color: green; color: white; font-size: 18px;");
-        walkDuration = 90 + QRandomGenerator::global()->bounded(30);
+        int walkDuration = 40 + QRandomGenerator::global()->bounded(50);  // 40s ~ 1m 30s
         modeSwitchTimer->start(walkDuration * 1000);
     }
+}
+
+void MainWindow::onExportCsvButtonClicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, "Save CSV", "", "CSV Files (*.csv)");
+    if (fileName.isEmpty())
+        return;
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly)) {
+        QMessageBox::warning(this, "Error", "Could not open file for writing");
+        return;
+    }
+
+    QTextStream stream(&file);
+    stream << "Time,Steps,Calories,Resting Time,Blood Pressure,Body Temperature,Heart Rate,Blood Glucose,Blood Oxygen\n";
+
+    const int pointCount = seriesSteps->points().size();
+    for (int i = 0; i < pointCount; ++i) {
+        QDateTime timestamp = QDateTime::fromMSecsSinceEpoch(seriesSteps->at(i).x());
+        QString timeStr = timestamp.toString("yyyy-MM-dd hh:mm:ss");
+
+        QString steps = QString::number(seriesSteps->at(i).y());
+        QString calories = QString::number(seriesCalories->at(i).y(), 'f', 1);
+        QString restingTime = QString::number(seriesRestingTime->at(i).y(), 'f', 1);
+        QString bloodPressure = QString::number(seriesBloodPressure->at(i).y(), 'f', 1);
+        QString bodyTemperature = QString::number(seriesTemperature->at(i).y(), 'f', 1);
+        QString heartRate = QString::number(seriesHeartRate->at(i).y(), 'f', 1);
+        QString bloodGlucose = QString::number(seriesBloodGlucose->at(i).y(), 'f', 1);
+        QString bloodOxygen = QString::number(seriesBloodOxygen->at(i).y(), 'f', 1);
+
+        stream << timeStr << "," << steps << "," << calories << "," << restingTime << "," << bloodPressure << ","
+               << bodyTemperature << "," << heartRate << "," << bloodGlucose << "," << bloodOxygen << "\n";
+    }
+
+    file.close();
+    QMessageBox::information(this, "Success", "Data exported successfully");
 }

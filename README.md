@@ -55,17 +55,3 @@ git clone https://github.com/yourusername/health-tracker.git
 
 - Qt 6.7.2
 - QtCharts module
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
-
-For any questions or issues, please open an issue on the GitHub repository.

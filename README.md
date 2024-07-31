@@ -17,11 +17,6 @@ This Health Tracker Application is designed to simulate and display various heal
 
 ## Installation
 
-### QtXlsxWriter
-
-1. Download and install QtXlsxWriter from the [GitHub repository](https://github.com/dbzhang800/QtXlsxWriter).
-2. Follow the instructions in the repository to integrate QtXlsxWriter with your Qt project.
-
 ### Cloning the Repository
 
 Clone this repository to your local machine using the following command:
